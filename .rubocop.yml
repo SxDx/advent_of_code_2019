@@ -1,0 +1,5 @@
+require: rubocop-performance
+AllCops:
+  TargetRubyVersion: 2.6
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
