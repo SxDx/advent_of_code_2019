@@ -3,3 +3,11 @@ AllCops:
   TargetRubyVersion: 2.6
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+Style/Documentation:
+  Enabled: false
+Naming/UncommunicativeMethodParamName:
+  Enabled: false
+Metrics/LineLength:
+  Max: 150
+Metrics/AbcSize:
+  Enabled: false
