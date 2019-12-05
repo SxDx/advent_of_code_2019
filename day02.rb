@@ -1,46 +1,15 @@
 # frozen_string_literal: true
 
+require_relative "lib/intcode.rb"
 input = DATA.read.split(",").map(&:to_i)
 
-def run(input, noun = 12, verb = 2)
-  input = input.dup
-  input[1] = noun
-  input[2] = verb
-
-  ip = 0
-  while (opcode = input[ip])
-    break if opcode == 99
-
-    params = input[ip + 1, 3]
-    ia1, ia2, oa = params
-    iv1 = input[ia1]
-    iv2 = input[ia2]
-
-    ov =
-      case opcode
-      when 1
-        iv1 + iv2
-      when 2
-        iv1 * iv2
-      else
-        raise "Unknown Opcode #{opcode}"
-      end
-
-    input[oa] = ov
-
-    ip += 4
-  end
-
-  input[0]
-end
-
 # Part 1
-puts run(input)
+puts Intcode.run(input, 12, 2)[0]
 
 # Part 2
 100.times do |noun|
   100.times do |verb|
-    puts "#{noun * 100 + verb}" if run(input, noun, verb) == 19690720
+    puts "#{noun * 100 + verb}" if Intcode.run(input, noun, verb)[0] == 19690720
   end
 end
 
